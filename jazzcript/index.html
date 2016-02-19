@@ -1,0 +1,21 @@
+function jazz() { jazz.loadModule("jazzcript/modules.js") }
+jazz.loadModules = function(list, callback) {
+    list.length && jazz.loadModule(list.shift(), function(){
+        (list.length && jazz.loadModules(list, callback)) || (callback && callback());
+    });
+};
+jazz.loadModule = function(url, done) {
+    var module = document.createElement("script");
+    module.onload = done;
+    module.charset = "utf-8";
+    module.src = url;
+    document.head.appendChild(module);
+};
+jazz.loadStyle = function (url) {
+    var newStyle = document.createElement("link");
+    newStyle.rel = "stylesheet";
+    newStyle.type = "text/css";
+    newStyle.href = url;
+    document.head.appendChild(newStyle);
+};
+onload = jazz;

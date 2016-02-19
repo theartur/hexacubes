@@ -1,0 +1,1 @@
+rm -rf jazzcript index.{html,js} uninstall-jazzcript
