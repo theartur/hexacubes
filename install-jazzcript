@@ -1,0 +1,24 @@
+export jazzcript=${0##*-}
+echo "<script src=$jazzcript></script>">index.html
+mkdir $jazzcript
+echo 'function jazz() { jazz.loadModule("'$jazzcript'/modules.js") }
+jazz.loadModules = function(list, callback) {
+    list.length && jazz.loadModule(list.shift(), function(){
+        (list.length && jazz.loadModules(list, callback)) || (callback && callback());
+    });
+};
+jazz.loadModule = function(url, done) {
+    var module = document.createElement("script");
+    module.onload = done;
+    module.charset = "utf-8";
+    module.src = url;
+    document.head.appendChild(module);
+};
+onload = jazz;'>$jazzcript/index.html
+echo 'jazz.loadModules([
+    "index.js",
+    ""
+])'>$jazzcript/modules.js
+echo "rm -rf $jazzcript index.{html,js} uninstall-$jazzcript">uninstall-$jazzcript
+chmod +x uninstall-$jazzcript
+echo \/\/ imagine explore realize inspire$'\n'>index.js
