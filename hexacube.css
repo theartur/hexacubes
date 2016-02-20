@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #000;
     font-size: 20px;
 }
@@ -6,6 +6,7 @@ body{
     position: absolute;
     text-align: center;
     color: #222;
+    transform-style: preserve-3d;
 }
 
 .box-wrapper {
@@ -14,11 +15,22 @@ body{
     perspective-origin: 0 0;
     height: 1.8em;
     margin: 1.4em 0;
+    transform-style: preserve-3d;
+    animation: spinY 5s infinite linear;
+}
+
+.box-wrapper:hover div {
+    background: blue;
+}
+
+.box-wrapper.active div {
+    background: #fff;
 }
 
 .box {
     position: relative;
     width: 1em;
+    height: 1em;
     transform-style: preserve-3d;
     transform: rotateX(45deg) rotateY(45deg);
     padding: 0.3em 0.6em;
@@ -34,31 +46,36 @@ body{
     box-shadow: inset 0px 0px .25em #fff;
 }
 
-.back {
-    transform: translateZ(-1em) rotateY(180deg);
-    background-color: #00f;
+.top {
+    transform: rotateX(-90deg);
+    transform-origin: top center;
+    background-color: #f00;
 }
+
+.front {
+    background-color: #0f0;
+}
+
 .right {
     transform: rotateY(-270deg) translateX(1em);
     transform-origin: top right;
     background-color: #00f;
 }
-.left {
-    transform: rotateY(270deg) translateX(-1em);
-    transform-origin: center left;
-    background-color: #00f;
-}
-.top {
-    transform: rotateX(-90deg);
-    transform-origin: top center;
-    background-color: #00f;
-}
+
 .bottom {
     transform: rotateX(90deg);
     transform-origin: bottom center;
-    background-color: #00f;
+    background-color: #f00;
 }
-.front {
+
+.back {
+    transform: translateZ(-1em) rotateY(180deg);
+    background-color: #0f0;
+}
+
+.left {
+    transform: rotateY(270deg) translateX(-1em);
+    transform-origin: center left;
     background-color: #00f;
 }
 
@@ -88,6 +105,10 @@ body{
 
 .spinZ {
     animation: spinZ 10s infinite ease;
+}
+
+.spinAll {
+    animation: spinX 10s infinite ease, spinY 10s infinite ease, spinZ 10s infinite ease;
 }
 
 .shadow-wrapper {
