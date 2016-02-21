@@ -1,16 +1,39 @@
 jazz.loadStyle("hexacube.css");
 
 var cols = 16, rows = 16;
+var artull = [];
 
 $.get("hexacube.html", function (cube) {
-    var body = $("body"), col = $('<div class="col" />'), skull = 10;
+    var body = $('<div />'), col = $('<div class="col" />'), skull = 10;
+    
+    body.addClass("artull pristine").appendTo("body");
+    
+    setTimeout(function () {
+        body.removeClass("pristine"); // activate entrance ASAP
+    }, 0);
     
     cube = $(cube);
     
-    body.on("click", "div", function(){
-        var box = $(this).parents(".box-wrapper");
-        console.log(box);
+    body.on("click", ".box-wrapper", function(){
+        var box = $(this);
         box.addClass("active");
+        
+        console.log(".artull .col:nth-child(" + (parseInt(box.parent().index(), 10)+1) + ") .box-wrapper:nth-child(" + (parseInt(box.index(), 10)+1) + ") .box div");
+        
+        return false;
+    });
+    
+    body.on("mouseenter", ".box-wrapper", function(){
+        var box = $(this);
+        box.addClass("hover");
+        
+        return false;
+    });
+    
+    body.on("mouseleave", ".box-wrapper", function(){
+        var box = $(this);
+        box.removeClass("hover");
+        
         return false;
     });
 
@@ -18,8 +41,9 @@ $.get("hexacube.html", function (cube) {
 
     while(skull--) col.append(cube.clone(true));
 
-    var marginCounter = 0.9;
-    var marginIncrement = 0.9;
+    var marginIncrement = 0.9;// 0.9;
+    
+    var marginCounter = marginIncrement;
     var newCol;
     
     while (cols--) {
