@@ -1,10 +1,10 @@
 jazz.loadStyle("hexacube.css");
 
-var cols = 16, rows = 16;
+var cols = 15, rows = 5;
 var artull = [];
 
 $.get("hexacube.html", function (cube) {
-    var body = $('<div />'), col = $('<div class="col" />'), skull = 10;
+    var body = $('<div />'), col = $('<div class="col" />'), skull = rows;
     
     body.addClass("artull pristine").appendTo("body");
     
@@ -18,24 +18,24 @@ $.get("hexacube.html", function (cube) {
         var box = $(this);
         box.addClass("active");
         
-        console.log(".artull .col:nth-child(" + (parseInt(box.parent().index(), 10)+1) + ") .box-wrapper:nth-child(" + (parseInt(box.index(), 10)+1) + ") .box div");
+//         console.log(".artull .col:nth-child(" + (parseInt(box.parent().index(), 10)+1) + ") .box-wrapper:nth-child(" + (parseInt(box.index(), 10)+1) + ") .box div");
         
         return false;
     });
     
-    body.on("mouseenter", ".box-wrapper", function(){
-        var box = $(this);
-        box.addClass("hover");
+//     body.on("mouseenter", ".box-wrapper", function(){
+//         var box = $(this);
+//         box.addClass("hover");
         
-        return false;
-    });
+//         return false;
+//     });
     
-    body.on("mouseleave", ".box-wrapper", function(){
-        var box = $(this);
-        box.removeClass("hover");
+//     body.on("mouseleave", ".box-wrapper", function(){
+//         var box = $(this);
+//         box.removeClass("hover");
         
-        return false;
-    });
+//         return false;
+//     });
 
     console.log("cube", cube);
 

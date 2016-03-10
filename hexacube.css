@@ -18,15 +18,17 @@ body {
     height: 1.8em;
     margin: 1.4em 0; /* 1.4em 0; */
     transform-style: preserve-3d;
-    visibility: hidden;
+    xvisibility: hidden;
+    opacity: .05;
     animation: spinBack 2s;
+    transition: all 10s ease;
 }
 
-.box-wrapper.hover {
+.box-wrapper:hover {
     animation: spinY 3s infinite linear;
 }
 
-.box-wrapper.hover .box div {
+.box-wrapper:hover .box div {
     background: #ffe500;
     box-shadow: inset 0px 0px .6em #fff;
 }
@@ -35,12 +37,47 @@ body {
     background: #000;
 }
 
+.box-wrapper.active:hover .box div {
+    opacity: 0;
+}
+
+.box-wrapper.active:hover .box .top {
+    xbackground: #f00;
+    transform: rotateX(-90deg) translateZ(-10em);
+}
+
+.box-wrapper.active:hover .box .front {
+    xbackground: #0f0;
+    transform: translateZ(10em);
+}
+
+.box-wrapper.active:hover .box .right {
+    xbackground: #00f;
+    transform: rotateY(-270deg) translateX(1em) translateZ(10em);
+}
+
+.box-wrapper.active:hover .box .bottom {
+    xbackground: #ff0;
+    transform: rotateX(90deg) translateZ(-10em);
+}
+
+.box-wrapper.active:hover .box .back {
+    xbackground: #0ff;
+    transform: translateZ(-10em) rotateY(180deg);
+}
+
+.box-wrapper.active:hover .box .left {
+    xbackground: #f0f;
+    transform: rotateY(270deg) translateX(-1em) translateZ(10em);
+}
+
+
 .box {
     position: relative;
     width: 1em;
     height: 1em;
     transform-style: preserve-3d;
-    transform: rotateX(45deg) rotateY(45deg) translateZ(0.3em);
+    transform: rotateX(45deg) rotateY(45deg);
     padding: 0.3em 0.6em;
     perspective-origin: 0 0;
 }
@@ -54,6 +91,7 @@ body {
     background: #ff0;
     box-shadow: inset -0.3em -0.3em .6em #844A00;
     border-radius: 0.15em;
+    transition: all .3s ease;
 }
 
 .top {
@@ -131,50 +169,51 @@ body {
 }
 
 
-.artull .col:nth-child(17) .box-wrapper:nth-child(5),
-.artull .col:nth-child(18) .box-wrapper:nth-child(5),
-.artull .col:nth-child(16) .box-wrapper:nth-child(6),
-.artull .col:nth-child(18) .box-wrapper:nth-child(6),
-.artull .col:nth-child(20) .box-wrapper:nth-child(6),
-.artull .col:nth-child(22) .box-wrapper:nth-child(6),
-.artull .col:nth-child(23) .box-wrapper:nth-child(5),
-.artull .col:nth-child(24) .box-wrapper:nth-child(5),
-.artull .col:nth-child(22) .box-wrapper:nth-child(5),
-.artull .col:nth-child(20) .box-wrapper:nth-child(5),
-.artull .col:nth-child(16) .box-wrapper:nth-child(5),
-.artull .col:nth-child(14) .box-wrapper:nth-child(5),
-.artull .col:nth-child(12) .box-wrapper:nth-child(5),
-.artull .col:nth-child(11) .box-wrapper:nth-child(5),
-.artull .col:nth-child(10) .box-wrapper:nth-child(6),
-.artull .col:nth-child(12) .box-wrapper:nth-child(6),
-.artull .col:nth-child(14) .box-wrapper:nth-child(6),
-.artull .col:nth-child(11) .box-wrapper:nth-child(6),
-.artull .col:nth-child(13) .box-wrapper:nth-child(6),
-.artull .col:nth-child(15) .box-wrapper:nth-child(6),
-.artull .col:nth-child(17) .box-wrapper:nth-child(6),
-.artull .col:nth-child(19) .box-wrapper:nth-child(6),
-.artull .col:nth-child(18) .box-wrapper:nth-child(7),
-.artull .col:nth-child(14) .box-wrapper:nth-child(7),
-.artull .col:nth-child(10) .box-wrapper:nth-child(7),
+.artull .col:nth-child(15) .box-wrapper:nth-child(3),
+.artull .col:nth-child(16) .box-wrapper:nth-child(3),
+.artull .col:nth-child(14) .box-wrapper:nth-child(4),
+.artull .col:nth-child(16) .box-wrapper:nth-child(4),
+.artull .col:nth-child(18) .box-wrapper:nth-child(4),
+.artull .col:nth-child(20) .box-wrapper:nth-child(4),
+.artull .col:nth-child(21) .box-wrapper:nth-child(3),
+.artull .col:nth-child(22) .box-wrapper:nth-child(3),
+.artull .col:nth-child(20) .box-wrapper:nth-child(3),
+.artull .col:nth-child(18) .box-wrapper:nth-child(3),
+.artull .col:nth-child(14) .box-wrapper:nth-child(3),
+.artull .col:nth-child(12) .box-wrapper:nth-child(3),
+.artull .col:nth-child(10) .box-wrapper:nth-child(3),
+.artull .col:nth-child(9) .box-wrapper:nth-child(3),
+.artull .col:nth-child(8) .box-wrapper:nth-child(4),
+.artull .col:nth-child(10) .box-wrapper:nth-child(4),
+.artull .col:nth-child(12) .box-wrapper:nth-child(4),
+.artull .col:nth-child(9) .box-wrapper:nth-child(4),
+.artull .col:nth-child(11) .box-wrapper:nth-child(4),
+.artull .col:nth-child(13) .box-wrapper:nth-child(4),
 .artull .col:nth-child(15) .box-wrapper:nth-child(4),
 .artull .col:nth-child(17) .box-wrapper:nth-child(4),
-.artull .col:nth-child(19) .box-wrapper:nth-child(4),
-.artull .col:nth-child(21) .box-wrapper:nth-child(4),
-.artull .col:nth-child(23) .box-wrapper:nth-child(4),
-.artull .col:nth-child(28) .box-wrapper:nth-child(4),
-.artull .col:nth-child(29) .box-wrapper:nth-child(3),
-.artull .col:nth-child(30) .box-wrapper:nth-child(4),
-.artull .col:nth-child(22) .box-wrapper:nth-child(7),
-.artull .col:nth-child(24) .box-wrapper:nth-child(7),
-.artull .col:nth-child(21) .box-wrapper:nth-child(7),
-.artull .col:nth-child(6) .box-wrapper:nth-child(7),
-.artull .col:nth-child(4) .box-wrapper:nth-child(7),
-.artull .col:nth-child(5) .box-wrapper:nth-child(7),
-.artull .col:nth-child(12) .box-wrapper:nth-child(4),
-.artull .col:nth-child(10) .box-wrapper:nth-child(4),
-.artull .col:nth-child(13) .box-wrapper:nth-child(3)
+.artull .col:nth-child(16) .box-wrapper:nth-child(5),
+.artull .col:nth-child(12) .box-wrapper:nth-child(5),
+.artull .col:nth-child(8) .box-wrapper:nth-child(5),
+.artull .col:nth-child(13) .box-wrapper:nth-child(2),
+.artull .col:nth-child(15) .box-wrapper:nth-child(2),
+.artull .col:nth-child(17) .box-wrapper:nth-child(2),
+.artull .col:nth-child(19) .box-wrapper:nth-child(2),
+.artull .col:nth-child(21) .box-wrapper:nth-child(2),
+.artull .col:nth-child(26) .box-wrapper:nth-child(2),
+.artull .col:nth-child(27) .box-wrapper:nth-child(1),
+.artull .col:nth-child(28) .box-wrapper:nth-child(2),
+.artull .col:nth-child(20) .box-wrapper:nth-child(5),
+.artull .col:nth-child(22) .box-wrapper:nth-child(5),
+.artull .col:nth-child(19) .box-wrapper:nth-child(5),
+.artull .col:nth-child(4) .box-wrapper:nth-child(5),
+.artull .col:nth-child(2) .box-wrapper:nth-child(5),
+.artull .col:nth-child(3) .box-wrapper:nth-child(5),
+.artull .col:nth-child(10) .box-wrapper:nth-child(2),
+.artull .col:nth-child(8) .box-wrapper:nth-child(2),
+.artull .col:nth-child(11) .box-wrapper:nth-child(1)
 {
     visibility: visible;
+    opacity: 1;
 }
 
 .artull {
