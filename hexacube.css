@@ -71,6 +71,33 @@ body {
     transform: rotateY(270deg) translateX(-1em) translateZ(10em);
 }
 
+.exploded .box div {
+    opacity: 0;
+}
+
+.exploded .box .top {
+    transform: rotateX(-90deg) translateZ(-10em);
+}
+
+.exploded .box .front {
+    transform: translateZ(10em);
+}
+
+.exploded .box .right {
+    transform: rotateY(-270deg) translateX(1em) translateZ(10em);
+}
+
+.exploded .box .bottom {
+    transform: rotateX(90deg) translateZ(-10em);
+}
+
+.exploded .box .back {
+    transform: translateZ(-10em) rotateY(180deg);
+}
+
+.exploded .box .left {
+    transform: rotateY(270deg) translateX(-1em) translateZ(10em);
+}
 
 .box {
     position: relative;

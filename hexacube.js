@@ -1,22 +1,68 @@
 jazz.loadStyle("hexacube.css");
 
 var cols = 15, rows = 5;
-var artull = [];
 
 $.get("hexacube.html", function (cube) {
     var body = $('<div />'), col = $('<div class="col" />'), skull = rows;
     
     body.addClass("artull pristine").appendTo("body");
     
-    setTimeout(function () {
+    function init() {
         body.removeClass("pristine"); // activate entrance ASAP
-    }, 0);
+        
+        var countEntrance = 0;
+        var countInterval = 50;
+        
+        $($(".box-wrapper").get().reverse()).each(function () {
+            var $this = $(this);
+            var opacity = $this.css("opacity");
+            
+            if (opacity == "1") {
+                countEntrance++;
+                $this.addClass("active");
+                
+                setTimeout(function () {
+                    $this.removeClass("active");
+                }, countEntrance * countInterval);
+            }
+        });
+    }
+    
+    var touchedCubes = 0;
+    function processLogic() {
+        if (touchedCubes == 42) {
+            explodeAll();
+        }
+    }
+    
+    function explodeAll() {
+        console.log("explodeAll()");
+        var countExplode = 0;
+        var countExplodeInterval = 50;
+        
+        /*$($(".box-wrapper").get().reverse())*/$(".active").each(function () {
+            var $this = $(this);
+            
+            countExplode++;
+
+            setTimeout(function () {
+                $this.addClass("exploded");
+            }, countExplode * countExplodeInterval);
+        });
+    }
     
     cube = $(cube);
     
     body.on("click", ".box-wrapper", function(){
         var box = $(this);
-        box.addClass("active");
+        
+        var boxOpacity = box.css("opacity");
+
+        if (boxOpacity == "1") {
+            box.addClass("active");
+            touchedCubes++;
+            processLogic();
+        }
         
 //         console.log(".artull .col:nth-child(" + (parseInt(box.parent().index(), 10)+1) + ") .box-wrapper:nth-child(" + (parseInt(box.index(), 10)+1) + ") .box div");
         
@@ -55,4 +101,8 @@ $.get("hexacube.html", function (cube) {
         newCol = col.clone().css({margin:"0 " + marginCounter + "em"});
         body.append(newCol);
     }
+    
+    setTimeout(function(){
+        init();
+    }, 250);
 });
