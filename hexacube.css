@@ -22,6 +22,7 @@ body {
     opacity: .05;
     animation: spinBack 2s;
     transition: all 10s ease;
+    outline: 1px solid transparent;
 }
 
 .box-wrapper:hover {
@@ -107,6 +108,7 @@ body {
     transform: rotateX(45deg) rotateY(45deg);
     padding: 0.3em 0.6em;
     perspective-origin: 0 0;
+    outline: 1px solid transparent;
 }
 .box p {
     padding: 40px 0;
@@ -119,6 +121,7 @@ body {
     box-shadow: inset -0.3em -0.3em .6em #844A00;
     border-radius: 0.15em;
     transition: all .3s ease;
+    outline: 1px solid transparent;
 }
 
 .top {
